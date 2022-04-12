@@ -2,14 +2,15 @@
   text-align: center;
 }
 
+.mainTitle {
+  font-family: 'Monoton', cursive;
+  font-family: 'Rubik Moonrocks', cursive;
+}
+
 .categories {
   display: flex;
   margin: auto;
-  width: 45%;
-}
-
-.categories button {
-  margin-left: 10px;
+  width: 50%;
 }
 
 .products {
@@ -25,6 +26,7 @@
   width: calc(94% / 3);
   margin: 1%;
 }
+
 .productImg {
   margin-bottom: auto;
   margin-top: auto;
@@ -36,12 +38,4 @@
 .productDesc {
   overflow-y: scroll;
   height: 100px;
-}
-
-.white {
-  background-color: white;
-}
-
-.gray {
-  background-color: gray;
 }
