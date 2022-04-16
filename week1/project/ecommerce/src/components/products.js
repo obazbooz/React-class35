@@ -1,20 +1,14 @@
 import allProducts from '../fake-data/all-products.js';
-
-function ProductsItem({ product: { title, description, image } }) {
-  return (
-    <li className="productCard">
-      <img className="productImg" src={image} alt={title} />
-      <p className="productDesc">{description}</p>
-    </li>
-  );
-}
+import ProductsItem from './productItem.js';
 
 function Products({ selectedCategory }) {
   if (selectedCategory === 'All') {
     return (
       <ul className="products">
-        {allProducts.map((product) => (
-          <ProductsItem product={product} />
+        {allProducts.map((product, index) => (
+          <div key={index} className="productCard">
+            <ProductsItem product={product} />
+          </div>
         ))}
       </ul>
     );
@@ -24,8 +18,10 @@ function Products({ selectedCategory }) {
     );
     return (
       <ul className="products">
-        {categoryProducts.map((product) => (
-          <ProductsItem product={product} />
+        {categoryProducts.map((product, index) => (
+          <div key={index} className="productCard">
+            <ProductsItem product={product} />
+          </div>
         ))}
       </ul>
     );

@@ -5,15 +5,18 @@ import './App.css';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('All');
-
   const setSelectedCategoryHandler = (category) => {
-    const categoryName = category.slice(6);
-    setSelectedCategory(categoryName);
+    if (category === 'All') {
+      setSelectedCategory('All');
+    } else {
+      let categoryName = '';
+      categoryName = category.slice(6);
+      setSelectedCategory(categoryName);
+    }
   };
-
   return (
     <div className="App">
-      <h1 className='mainTitle'>MEDIA OCEAN</h1>
+      <h1 className="mainTitle">MEDIA OCEAN</h1>
       <Categories setSelectedCategoryHandler={setSelectedCategoryHandler} />
       <Products selectedCategory={selectedCategory} />
     </div>
