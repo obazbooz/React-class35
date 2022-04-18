@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+}
+
+.mainTitle {
+  font-family: 'Monoton', cursive;
+  font-family: 'Rubik Moonrocks', cursive;
+}
+
+/************************Categories***********************************/
+
+.categories {
+  display: flex;
+  margin: auto;
+  width: 40%;
+  margin-bottom: 100px;
+}
+
+.categoryBtn {
+  margin: 10px;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+/************************Products*****************************/
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  padding-inline-start: 0;
+}
+
+.productCard {
+  width: calc(94% / 3);
+  margin: 1%;
+}
+
+.productImg {
+  margin-bottom: auto;
+  margin-top: auto;
+  max-height: 300px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.productDesc {
+  overflow-y: scroll;
+  height: 100px;
+}
