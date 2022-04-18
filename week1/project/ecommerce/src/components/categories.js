@@ -10,7 +10,7 @@ function Categories({ setSelectedCategoryHandler }) {
   };
   let categoryName = '';
   return (
-    <div style={{ marginBottom: '100px' }}>
+    <div className="categories">
       {allCategories.map(
         (category, index) => (
           (categoryName = category.slice(6)),
@@ -20,9 +20,6 @@ function Categories({ setSelectedCategoryHandler }) {
               className="categoryBtn"
               style={{
                 opacity: active === category && !flag ? 1 : 0.3,
-                margin: '10px',
-                borderRadius: '10px',
-                padding: '5px 15px',
                 boxShadow:
                   active === category && !flag ? '0px 0px 6px #661E0C' : '',
               }}

@@ -7,20 +7,22 @@
   font-family: 'Rubik Moonrocks', cursive;
 }
 
+/************************Categories***********************************/
+
 .categories {
   display: flex;
   margin: auto;
-  width: 50%;
+  width: 40%;
+  margin-bottom: 100px;
 }
 
-/* .gategoryBtn {
-  opacity: active === category ? 1 : 0.6,
-  margin: '10px',
-  borderRadius: '10px',
-  padding: '5px 15px',
-  boxShadow: active === category ? '0px 0px 6px #661E0C' : '',
-} */
+.categoryBtn {
+  margin: 10px;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
 
+/************************Products*****************************/
 .products {
   display: flex;
   flex-wrap: wrap;
