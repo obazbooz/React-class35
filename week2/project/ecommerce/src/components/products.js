@@ -1,8 +1,8 @@
 import ProductsItem from './productItem.js';
 import productsFilter from '../productsFilter.js';
 
-function Products({ selectedCategory , allProducts }) {
-  const products = productsFilter(selectedCategory ,allProducts);
+function Products({ selectedCategory, allProducts }) {
+  const products = productsFilter(selectedCategory, allProducts);
   return (
     <ul className="products">
       {products.map((product, index) => (

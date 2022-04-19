@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react';
 import Categories from './components/categories.js';
 import Products from './components/products.js';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from 'react-router-dom';
 
 function App() {
   const categoriesApiUrl = 'https://fakestoreapi.com/products/categories';
@@ -25,8 +31,10 @@ function App() {
       try {
         const categoriesApiResponse = await fetch(categoriesApiUrl);
         const categoriesApiData = await categoriesApiResponse.json();
-        setAllCategories(categoriesApiData);
-        setIsLoading(false);
+        setTimeout(() => {
+          setAllCategories(categoriesApiData);
+          setIsLoading(false);
+        }, 3000);
       } catch (error) {
         console.log(error);
         setIsFail(true);
@@ -37,8 +45,10 @@ function App() {
         const productsApiResponse = await fetch(productsApiUrl);
         const productsApiData = await productsApiResponse.json();
         console.log(productsApiData);
-        setAllProducts(productsApiData);
-        setIsLoading(false);
+        setTimeout(() => {
+          setAllProducts(productsApiData);
+          setIsLoading(false);
+        }, 3000);
       } catch (error) {
         setIsFail(true);
         console.log(error);
@@ -55,7 +65,13 @@ function App() {
         ''
       )}
       {isLoading ? (
-        <div>Data is loading.... Please waite.</div>
+        <div>
+          <img
+            className="loadingImg"
+            src="/isloading.gif"
+            alt="Image not found!"
+          />
+        </div>
       ) : (
         <div>
           <Categories
