@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import allCategories from '../fake-data/all-categories.js';
 
 function Categories({ setSelectedCategoryHandler, allCategories }) {
   const [active, setActive] = useState(allCategories[null]);

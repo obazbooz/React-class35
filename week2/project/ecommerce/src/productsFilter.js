@@ -1,5 +1,3 @@
-// import allProducts from './fake-data/all-products.js';
-
 const productsFilter = (selectedCategory, allProducts) => {
   let productsArray = [];
   if (selectedCategory === 'All') {

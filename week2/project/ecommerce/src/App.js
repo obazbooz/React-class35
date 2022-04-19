@@ -2,12 +2,6 @@ import { useState, useEffect } from 'react';
 import Categories from './components/categories.js';
 import Products from './components/products.js';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Outlet,
-} from 'react-router-dom';
 
 function App() {
   const categoriesApiUrl = 'https://fakestoreapi.com/products/categories';
@@ -34,7 +28,7 @@ function App() {
         setTimeout(() => {
           setAllCategories(categoriesApiData);
           setIsLoading(false);
-        }, 3000);
+        }, 2000);
       } catch (error) {
         console.log(error);
         setIsFail(true);
@@ -48,7 +42,8 @@ function App() {
         setTimeout(() => {
           setAllProducts(productsApiData);
           setIsLoading(false);
-        }, 3000);
+          setIsFail(false);
+        }, 2000);
       } catch (error) {
         setIsFail(true);
         console.log(error);
@@ -59,12 +54,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="mainTitle">MEDIA OCEAN</h1>
-      {isFail ? (
-        <div> Unable to get data Please check the requested link</div>
-      ) : (
-        ''
-      )}
-      {isLoading ? (
+      {isLoading && !isFail ? (
         <div>
           <img
             className="loadingImg"
@@ -83,6 +73,11 @@ function App() {
             allProducts={allProducts}
           />
         </div>
+      )}
+      {isFail ? (
+        <div> Unable to get data from server please try again later</div>
+      ) : (
+        ''
       )}
     </div>
   );

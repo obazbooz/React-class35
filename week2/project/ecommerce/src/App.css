@@ -55,17 +55,19 @@
   text-align: center;
 }
 
-.productDetailsContainer img {
-  width: 300px;
+.detailsImg {
+  width: 250px;
 }
 
 .productDetails {
-  border: 3px solid black;
   width: 70%;
   margin: auto;
   border-radius: 3px;
+  text-align: left;
 }
-
+.productDetails span {
+  color: #661e0c;
+}
 .loadingImg {
   text-align: center;
 }
