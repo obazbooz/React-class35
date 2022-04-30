@@ -38,7 +38,6 @@ function App() {
       try {
         const productsApiResponse = await fetch(productsApiUrl);
         const productsApiData = await productsApiResponse.json();
-        console.log(productsApiData);
         setTimeout(() => {
           setAllProducts(productsApiData);
           setIsLoading(false);
