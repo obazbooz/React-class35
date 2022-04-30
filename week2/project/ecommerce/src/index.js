@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ProductItemDetails from '../src/components/productItemDetails.js';
+import ProductItemDetails from './components/productItemDetails.js';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
