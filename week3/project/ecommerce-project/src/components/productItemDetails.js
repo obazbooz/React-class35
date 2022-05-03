@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 function ProductItemDetails() {
-  const [prodoctDetails, setProductDetails] = useState([]);
+  const [productDetails, setProductDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isFail, setIsFail] = useState(false);
-
   const { id } = useParams();
   const productDetailsApi = `https://fakestoreapi.com/products/${id}`;
 
@@ -37,31 +36,31 @@ function ProductItemDetails() {
         />
       ) : (
         <div>
-          <img className="detailsImg" src={prodoctDetails.image} />
+          <img className="detailsImg" src={productDetails.image} />
           <div className="productDetails">
             <p>
               <span>Product ID: </span>
-              {prodoctDetails.id}
+              {productDetails.id}
             </p>
             <p>
               <span>Product Title: </span>
-              {prodoctDetails.title}
+              {productDetails.title}
             </p>
             <p>
               <span>Product Category: </span>
-              {prodoctDetails.category}
+              {productDetails.category}
             </p>
             <p>
               <span>Product Price: </span>
-              {prodoctDetails.price}
+              {productDetails.price}
             </p>
             <p>
               <span>Product Description: </span>
-              {prodoctDetails.description}
+              {productDetails.description}
             </p>
             <p>
               <span>Product Rating: </span>
-              {prodoctDetails.rating.rate}
+              {productDetails.rating.rate}
             </p>
           </div>
         </div>

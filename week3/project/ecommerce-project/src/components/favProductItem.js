@@ -1,40 +1,28 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { FavContext } from '../FavContext';
+import useFetch from '../useFetch';
+import productsFilterById from '../productsFilterById';
+import ProductsItem from './productItem.js';
 
 function FavProductItem(props) {
-  const [favourite, setFavourite] = useContext(FavContext);
-  const [FavprodoctDetails, setFavProductDetails] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isFail, setIsFail] = useState(false);
+  const [favorite] = useContext(FavContext);
 
-  useEffect(() => {
-    favourite.map(async (id) => {
-      const productDetailsApi = `https://fakestoreapi.com/products/${id}`;
-      try {
-        const productDetailsApiRequest = await fetch(productDetailsApi);
-        const favProductDetailsData = await productDetailsApiRequest.json();
-        setFavProductDetails(favProductDetailsData);
-        setIsLoading(false);
-        setIsFail(false);
-        // setTimeout(() => {
-        // }, 2000);
-      } catch (error) {
-        console.log(error);
-        setIsFail(true);
-      }
-    }, []);
-  });
+  const productDetailsApi = `https://fakestoreapi.com/products`;
+  const { data } = useFetch(productDetailsApi);
+  const favoriteProductData = productsFilterById(data, favorite);
 
   return (
-    { (FavprodoctDetails === null) ? <p> no fav</p> : <li className="favProductContainer">
-    <img
-      className="productImg"
-      src={FavprodoctDetails.image}
-      alt={FavprodoctDetails.title}
-    />
-    <p className="productDesc">{FavprodoctDetails.description}</p>
-  </li> }
-
+    <li className="favProductContainer">
+      <div style={{ margin: '10px' }}>
+        <ul className="products">
+          {favoriteProductData.map((product, index) => (
+            <div key={index} className="productCard">
+              <ProductsItem product={product} />
+            </div>
+          ))}
+        </ul>
+      </div>
+    </li>
   );
 }
 

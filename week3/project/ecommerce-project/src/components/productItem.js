@@ -4,11 +4,12 @@ import heartRegular from '../icons/heartRegular.svg';
 import { FavContext } from '../FavContext';
 
 function ProductsItem({ product: { id, title, description, image } }) {
-  const [favourite, setFavourite] = useContext(FavContext);
+  const [favorite, setFavorite] = useContext(FavContext);
 
-  const toggleFav = (id) => {
-    setFavourite((prevFavIdArray) => [...prevFavIdArray, id]);
-    console.log(favourite);
+  const toggleFav = (productId) => {
+    setFavorite(() => {
+      return [...favorite, productId];
+    });
   };
 
   return (
