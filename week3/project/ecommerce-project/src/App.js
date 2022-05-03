@@ -1,18 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import Categories from './components/categories.js';
 import Products from './components/products.js';
-import useFetch from './useFetch';
+import useFetchProducts from './useFetchProducts';
+import useFetchCategories from './useFetchCategories';
 import './App.css';
+import { LoadingContext } from './loadingContext';
+import { Link } from 'react-router-dom';
+import Navigation from './components/navigation';
 
 function App() {
   const categoriesApiUrl = 'https://fakestoreapi.com/products/categories';
   const productsApiUrl = 'https://fakestoreapi.com/products';
-  const [allCategories, setAllCategories] = useState([]);
-  const [allProducts, setAllProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [isFail, setIsFail] = useState(false);
+
+  const [isLoading, setIsLoading, isFail, setIsFail] =
+    useContext(LoadingContext);
+
   /************************************************** */
+
   const setSelectedCategoryHandler = (category) => {
     if (category === 'All') {
       setSelectedCategory('All');
@@ -21,47 +26,18 @@ function App() {
     }
   };
 
-  const { categoriesApiData, isLoading, isFail } = useFetch(categoriesApiUrl);
-  const { productsApiData, isLoading, isFail } = useFetch(productsApiUrl);
-
-  useEffect(() => {
-    setAllCategories(categoriesApiData);
-    setAllProducts(productsApiData);
-  }, []);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const categoriesApiResponse = await fetch(categoriesApiUrl);
-  //       const categoriesApiData = await categoriesApiResponse.json();
-  //       setAllCategories(categoriesApiData);
-  //       setIsLoading(false);
-  //       // setTimeout(() => {
-  //       // }, 2000);
-  //     } catch (error) {
-  //       console.log(error);
-  //       setIsFail(true);
-  //     }
-  //   })();
-  //   (async () => {
-  //     try {
-  //       const productsApiResponse = await fetch(productsApiUrl);
-  //       const productsApiData = await productsApiResponse.json();
-  //       setAllProducts(productsApiData);
-  //       setIsLoading(false);
-  //       setIsFail(false);
-  //       // setTimeout(() => {
-  //       // }, 2000);
-  //     } catch (error) {
-  //       setIsFail(true);
-  //       console.log(error);
-  //     }
-  //   })();
-  // }, []);
-
+  const { allCategories } = useFetchCategories(categoriesApiUrl);
+  const { allProducts } = useFetchProducts(productsApiUrl);
   return (
     <div className="App">
-      <h1 className="mainTitle">MEDIA OCEAN</h1>
+      {/* <nav className="navContainer">
+        <h1 className="mainTitle">MEDIA OCEAN</h1>
+        <div className="navElements">
+          <Link to={'/favorite'}>Favorites</Link>
+          <Link to={'/'}>Products</Link>
+        </div>
+      </nav> */}
+      <Navigation />
       {isLoading && !isFail ? (
         <div>
           <img
@@ -85,7 +61,7 @@ function App() {
       {isFail ? (
         <div> Unable to get data from server please try again later</div>
       ) : (
-        'Products found'
+        ''
       )}
     </div>
   );

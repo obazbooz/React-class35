@@ -7,20 +7,31 @@ function ProductsItem({ product: { id, title, description, image } }) {
   const [favorite, setFavorite] = useContext(FavContext);
 
   const toggleFav = (productId) => {
-    setFavorite(() => {
-      return [...favorite, productId];
-    });
+    // setFavorite(() => {
+    //   return [...favorite, productId];
+    // });
+    const isProductInFavoriteList = favorite.includes(productId);
+    if (!isProductInFavoriteList) {
+      setFavorite(() => {
+        return [...favorite, productId];
+      });
+    } else {
+      const unmountProductIdtFavoriteArray = favorite.filter(
+        (favProduct) => favProduct !== productId,
+      );
+      setFavorite(unmountProductIdtFavoriteArray);
+    }
   };
 
   return (
     <li className="productContainer">
-      <button
+      <img
+        className="favoriteIcon"
+        src={heartRegular}
         onClick={() => {
           toggleFav(id);
         }}
-      >
-        <img src={heartRegular} style={{ width: '10px' }} />
-      </button>
+      />
       <Link to={`/product/${id}`}>
         <img className="productImg" src={image} alt={title} />
         <p className="productDesc">{description}</p>

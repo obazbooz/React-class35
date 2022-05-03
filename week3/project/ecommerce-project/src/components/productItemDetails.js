@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import Navigation from './navigation';
 
 function ProductItemDetails() {
   const [productDetails, setProductDetails] = useState([]);
@@ -13,11 +14,9 @@ function ProductItemDetails() {
       try {
         const productDetailsApiRequest = await fetch(productDetailsApi);
         const productDetailsData = await productDetailsApiRequest.json();
-        setTimeout(() => {
-          setProductDetails(productDetailsData);
-          setIsLoading(false);
-          setIsFail(false);
-        }, 2000);
+        setProductDetails(productDetailsData);
+        setIsLoading(false);
+        setIsFail(false);
       } catch (error) {
         console.log(error);
         setIsFail(true);
@@ -27,7 +26,7 @@ function ProductItemDetails() {
 
   return (
     <div className="productDetailsContainer">
-      <h1 className="mainTitle">MEDIA OCEAN</h1>
+      <Navigation />
       {isLoading && !isFail ? (
         <img
           className="loadingImg"

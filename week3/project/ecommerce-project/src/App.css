@@ -2,9 +2,31 @@
   text-align: center;
 }
 
+.favProductContainer {
+  text-align: center;
+}
+
+.productDetailsContainer {
+  text-align: center;
+}
+.vanContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.navElements {
+  margin: 20px;
+}
+
+.navElements a {
+  margin: 10px;
+}
+
 .mainTitle {
   font-family: 'Monoton', cursive;
   font-family: 'Rubik Moonrocks', cursive;
+  font-size: 50px;
 }
 
 /************************Categories***********************************/
@@ -33,7 +55,7 @@
 }
 
 .productCard {
-  width: calc(94% / 3);
+  width: calc(92% / 3);
   margin: 1%;
   cursor: pointer;
 }
@@ -70,4 +92,14 @@
 }
 .loadingImg {
   text-align: center;
+}
+
+.productImgFavContainer {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+}
+
+.favoriteIcon {
+  width: 20px;
 }
