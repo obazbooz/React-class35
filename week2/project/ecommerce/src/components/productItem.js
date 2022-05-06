@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProductItemDetails from './productItemDetails.js';
 
 function ProductsItem({ product: { id, title, description, image } }) {
   return (

@@ -1,20 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ProductItemDetails from './components/productItemDetails.js';
+import './index.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(
-  <Router>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/product/:id" element={<ProductItemDetails />} />
-    </Routes>
-  </Router>,
-);
+root.render(<App name={'e-commerce shop'} />);
 
 reportWebVitals();
