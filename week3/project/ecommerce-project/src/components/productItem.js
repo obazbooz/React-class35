@@ -7,9 +7,6 @@ function ProductsItem({ product: { id, title, description, image } }) {
   const [favorite, setFavorite] = useContext(FavContext);
 
   const toggleFav = (productId) => {
-    // setFavorite(() => {
-    //   return [...favorite, productId];
-    // });
     const isProductInFavoriteList = favorite.includes(productId);
     if (!isProductInFavoriteList) {
       setFavorite(() => {
@@ -28,6 +25,7 @@ function ProductsItem({ product: { id, title, description, image } }) {
       <img
         className="favoriteIcon"
         src={heartRegular}
+        alt={'Product not found!'}
         onClick={() => {
           toggleFav(id);
         }}

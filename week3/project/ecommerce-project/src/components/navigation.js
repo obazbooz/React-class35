@@ -1,5 +1,3 @@
-import ProductsItem from './productItem.js';
-import productsFilter from '../productsFilter.js';
 import { Link } from 'react-router-dom';
 
 function Navigation() {

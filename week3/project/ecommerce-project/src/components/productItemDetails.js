@@ -1,29 +1,18 @@
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Navigation from './navigation';
+import useFetchProductById from '../useFetchProductById';
+import { LoadingContext } from '../loadingContext';
 
 function ProductItemDetails() {
-  const [productDetails, setProductDetails] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isFail, setIsFail] = useState(false);
+  const [isLoading, setIsLoading, isFail, setIsFail] =
+    useContext(LoadingContext);
   const { id } = useParams();
   const productDetailsApi = `https://fakestoreapi.com/products/${id}`;
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const productDetailsApiRequest = await fetch(productDetailsApi);
-        const productDetailsData = await productDetailsApiRequest.json();
-        setProductDetails(productDetailsData);
-        setIsLoading(false);
-        setIsFail(false);
-      } catch (error) {
-        console.log(error);
-        setIsFail(true);
-      }
-    })();
-  }, []);
-
+  const { productDetails } = useFetchProductById(productDetailsApi);
+  console.log(`isLoading${isLoading}`);
+  console.log(`isFail${isFail}`);
   return (
     <div className="productDetailsContainer">
       <Navigation />
@@ -31,11 +20,15 @@ function ProductItemDetails() {
         <img
           className="loadingImg"
           src="/isloading.gif"
-          alt="Image not found!"
+          alt="Loading icon not found!"
         />
       ) : (
         <div>
-          <img className="detailsImg" src={productDetails.image} />
+          <img
+            className="detailsImg"
+            src={productDetails.image}
+            alt={'Product_Img not found!'}
+          />
           <div className="productDetails">
             <p>
               <span>Product ID: </span>
@@ -57,18 +50,14 @@ function ProductItemDetails() {
               <span>Product Description: </span>
               {productDetails.description}
             </p>
-            <p>
-              <span>Product Rating: </span>
-              {productDetails.rating.rate}
-            </p>
           </div>
         </div>
       )}
-      {isFail ? (
-        <div> Unable to get data from server please try again later</div>
-      ) : (
-        ''
-      )}
+      <div>
+        {isFail && (
+          <div> Unable to get data from server please try again later :''</div>
+        )}
+      </div>
     </div>
   );
 }

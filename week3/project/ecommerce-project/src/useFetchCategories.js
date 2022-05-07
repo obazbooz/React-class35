@@ -15,6 +15,7 @@ const useFetchCategories = (url) => {
         setIsFail(false);
       } catch (error) {
         setIsFail(true);
+        setIsLoading(true);
         console.log(error);
       }
     })();
