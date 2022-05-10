@@ -3,8 +3,8 @@ import Shop from './components/shop';
 import ProductItemDetails from './components/productItemDetails.js';
 import FavProductItem from './components/favProductItem.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { FavProvider } from './FavContext';
-import { LoadingProvider } from './loadingContext';
+import { FavProvider } from './contexts/FavContext';
+import { LoadingProvider } from './contexts/loadingContext';
 import './App.css';
 
 function App() {
@@ -21,7 +21,6 @@ function App() {
           </Router>
         </LoadingProvider>
       </FavProvider>
-      ,
     </div>
   );
 }

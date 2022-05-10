@@ -1,20 +1,17 @@
-import { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Categories from './categories';
 import Products from './products';
 import Navigation from './navigation';
-import useFetchProducts from '../useFetchProducts';
-import useFetchCategories from '../useFetchCategories';
-import { LoadingContext } from '../loadingContext';
+import useFetchApi from '../hooks/useFetchApi';
+import { LoadingContext } from '../contexts/loadingContext';
 
 function App() {
   const categoriesApiUrl = 'https://fakestoreapi.com/products/categories';
   const productsApiUrl = 'https://fakestoreapi.com/products';
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const [isLoading, setIsLoading, isFail, setIsFail] =
+  const {isLoading,  isFail} =
     useContext(LoadingContext);
-
-  /************************************************** */
 
   const setSelectedCategoryHandler = (category) => {
     if (category === 'All') {
@@ -23,8 +20,9 @@ function App() {
       setSelectedCategory(category);
     }
   };
-  const { allCategories } = useFetchCategories(categoriesApiUrl);
-  const { allProducts } = useFetchProducts(productsApiUrl);
+  const allCategories = useFetchApi(categoriesApiUrl);
+  const allProducts = useFetchApi(productsApiUrl);
+
   return (
     <div className="App">
       <Navigation />
@@ -41,6 +39,7 @@ function App() {
           <Categories
             setSelectedCategoryHandler={setSelectedCategoryHandler}
             allCategories={allCategories}
+            selectedCategory={selectedCategory}
           />
           <Products
             selectedCategory={selectedCategory}

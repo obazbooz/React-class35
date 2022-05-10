@@ -1,18 +1,16 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Navigation from './navigation';
-import useFetchProductById from '../useFetchProductById';
-import { LoadingContext } from '../loadingContext';
+import useFetchApi from '../hooks/useFetchApi';
+import { LoadingContext } from '../contexts/loadingContext';
 
 function ProductItemDetails() {
-  const [isLoading, setIsLoading, isFail, setIsFail] =
+  const {isLoading, isFail} =
     useContext(LoadingContext);
   const { id } = useParams();
   const productDetailsApi = `https://fakestoreapi.com/products/${id}`;
+  const productDetails = useFetchApi(productDetailsApi);
 
-  const { productDetails } = useFetchProductById(productDetailsApi);
-  console.log(`isLoading${isLoading}`);
-  console.log(`isFail${isFail}`);
   return (
     <div className="productDetailsContainer">
       <Navigation />

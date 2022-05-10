@@ -8,7 +8,7 @@ export const LoadingProvider = (props) => {
 
   return (
     <LoadingContext.Provider
-      value={[isLoading, setIsLoading, isFail, setIsFail]}
+      value={{isLoading, setIsLoading, isFail, setIsFail}}
     >
       {props.children}
     </LoadingContext.Provider>

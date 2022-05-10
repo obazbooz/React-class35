@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FavContext } from '../FavContext';
+import { FavContext } from '../contexts/FavContext';
 import heartRegular from '../icons/heartRegular.svg';
 import heartSolid from '../icons/heartSolid.svg';
 
 function ProductsItem({ product: { id, title, description, image } }) {
-  const [favorite, setFavorite] = useContext(FavContext);
-  const [favoriteClicked, setFavoriteClicked] = useState(false);
+  const { favorite, setFavorite } = useContext(FavContext);
 
   const toggleFav = (productId) => {
     const isProductInFavoriteList = favorite.includes(productId);
@@ -14,21 +13,24 @@ function ProductsItem({ product: { id, title, description, image } }) {
       setFavorite(() => {
         return [...favorite, productId];
       });
-      setFavoriteClicked(true);
     } else {
-      const unmountProductIdtFavoriteArray = favorite.filter(
+      const filteredFavoriteArray = favorite.filter(
         (favProduct) => favProduct !== productId,
       );
-      setFavoriteClicked(false);
-      setFavorite(unmountProductIdtFavoriteArray);
+      setFavorite(filteredFavoriteArray);
     }
+  };
+
+  const inFavorite = (productId) => {
+    const productInFavorite = favorite.includes(productId);
+    return productInFavorite;
   };
 
   return (
     <li className="productContainer">
       <img
         className="favoriteIcon"
-        src={favoriteClicked ? heartSolid : heartRegular}
+        src={inFavorite(id) ? heartSolid : heartRegular}
         alt={'Product not found!'}
         onClick={() => {
           toggleFav(id);
