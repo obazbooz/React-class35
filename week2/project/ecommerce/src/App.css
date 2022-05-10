@@ -10,9 +10,7 @@
 /************************Categories***********************************/
 
 .categories {
-  display: flex;
   margin: auto;
-  width: 40%;
   margin-bottom: 100px;
 }
 

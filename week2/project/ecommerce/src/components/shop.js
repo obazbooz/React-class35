@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Categories from './categories';
 import Products from './products';
 
@@ -43,7 +43,7 @@ function Shop() {
         console.log(error);
       }
     })();
-  });
+  }, [selectedCategory]);
 
   return (
     <div className="App">
@@ -61,6 +61,7 @@ function Shop() {
           <Categories
             setSelectedCategoryHandler={setSelectedCategoryHandler}
             allCategories={allCategories}
+            selectedCategory={selectedCategory}
           />
           <Products
             selectedCategory={selectedCategory}

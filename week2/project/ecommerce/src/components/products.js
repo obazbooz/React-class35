@@ -1,3 +1,4 @@
+import React from 'react';
 import ProductsItem from './productItem.js';
 import productsFilter from '../productsFilter.js';
 

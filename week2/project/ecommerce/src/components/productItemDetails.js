@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 function ProductItemDetails() {
@@ -22,7 +22,7 @@ function ProductItemDetails() {
         setIsFail(true);
       }
     })();
-  },);
+  }, [productDetailsApi]);
 
   return (
     <div className="productDetailsContainer">
