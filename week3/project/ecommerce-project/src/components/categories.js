@@ -19,12 +19,9 @@ function Categories({
         return (
           <button
             key={index}
-            className="categoryBtn"
-            style={{
-              opacity: selectedCategory === category ? 1 : 0.3,
-              boxShadow:
-                selectedCategory === category ? '0px 0px 6px #661E0C' : '',
-            }}
+            className={`categoryBtn ${
+              selectedCategory === category ? 'selectedBtn' : 'unselectedBtn'
+            }`}
             onClick={() => {
               OnClickCategoryBtn(category);
             }}

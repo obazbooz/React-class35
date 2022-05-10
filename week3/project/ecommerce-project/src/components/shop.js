@@ -10,8 +10,7 @@ function App() {
   const productsApiUrl = 'https://fakestoreapi.com/products';
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const {isLoading,  isFail} =
-    useContext(LoadingContext);
+  const { isLoading, isFail } = useContext(LoadingContext);
 
   const setSelectedCategoryHandler = (category) => {
     if (category === 'All') {
@@ -30,8 +29,8 @@ function App() {
         <div>
           <img
             className="loadingImg"
-            src="/isloading.gif"
-            alt="Loading icon not found!"
+            src="/isLoading.gif"
+            alt="Loading icon is not available!"
           />
         </div>
       ) : (

@@ -1,12 +1,10 @@
 const productsFilterById = (products, favProductsIdArray) => {
-  let finalProductsArray = [];
-  let filterArray = [];
-  favProductsIdArray.map((favProductId) => {
-    filterArray = products.filter((product) => product.id === favProductId);
-    filterArray.map((item) => {
-      finalProductsArray = [...finalProductsArray, item];
-    });
+  return products.filter((product) => {
+    if (favProductsIdArray.includes(product.id)) {
+      return product;
+    }
+    return null;
   });
-  return finalProductsArray;
 };
+
 export default productsFilterById;

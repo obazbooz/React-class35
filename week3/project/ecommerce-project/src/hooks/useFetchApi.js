@@ -18,7 +18,7 @@ const useFetchApi = (url) => {
         console.log(error);
       }
     })();
-  }, [url]);
+  }, [url, setIsFail, setIsLoading]);
 
   return data;
 };

@@ -16,13 +16,12 @@ function FavProductItem(props) {
   return (
     <div className="favProductContainer">
       <Navigation />
-      {favorite.length === 0 && <p>No products in the favorites list yet.</p>}
       {isLoading && !isFail ? (
         <div>
           <img
             className="loadingImg"
-            src="/isloading.gif"
-            alt="Loading icon not found!"
+            src="/isLoading.gif"
+            alt="Loading icon is not available!"
           />
         </div>
       ) : (
@@ -34,6 +33,9 @@ function FavProductItem(props) {
               </div>
             ))}
           </ul>
+          {favorite.length === 0 && (
+            <p>No products in the favorites list yet.</p>
+          )}
         </div>
       )}
     </div>

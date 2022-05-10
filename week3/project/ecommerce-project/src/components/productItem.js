@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FavContext } from '../contexts/FavContext';
 import heartRegular from '../icons/heartRegular.svg';
@@ -31,14 +31,18 @@ function ProductsItem({ product: { id, title, description, image } }) {
       <img
         className="favoriteIcon"
         src={inFavorite(id) ? heartSolid : heartRegular}
-        alt={'Product not found!'}
+        alt={'Like button icon is not available!'}
         onClick={() => {
           toggleFav(id);
         }}
       />
       <Link to={`/product/${id}`}>
-        <img className="productImg" src={image} alt={title} />
-        <p className="productDesc">{description}</p>
+        <img
+          className="productImg"
+          src={image}
+          alt={'Product img is not available'}
+        />
+        <p className="productTitle">{title}</p>
       </Link>
     </li>
   );

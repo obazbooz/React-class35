@@ -5,8 +5,7 @@ import useFetchApi from '../hooks/useFetchApi';
 import { LoadingContext } from '../contexts/loadingContext';
 
 function ProductItemDetails() {
-  const {isLoading, isFail} =
-    useContext(LoadingContext);
+  const { isLoading, isFail } = useContext(LoadingContext);
   const { id } = useParams();
   const productDetailsApi = `https://fakestoreapi.com/products/${id}`;
   const productDetails = useFetchApi(productDetailsApi);
@@ -18,14 +17,14 @@ function ProductItemDetails() {
         <img
           className="loadingImg"
           src="/isloading.gif"
-          alt="Loading icon not found!"
+          alt="Loading icon is not available!"
         />
       ) : (
         <div>
           <img
             className="detailsImg"
             src={productDetails.image}
-            alt={'Product_Img not found!'}
+            alt={'Product img is not available!'}
           />
           <div className="productDetails">
             <p>
