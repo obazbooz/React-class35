@@ -28,17 +28,19 @@ function ProductItemDetails() {
     <div className="productDetailsContainer">
       <h1 className="mainTitle">MEDIA OCEAN</h1>
       {isLoading && !isFail ? (
-        <img
-          className="loadingImg"
-          src="/isLoading.gif"
-          alt="Loading Icon not found!"
-        />
+        <div>
+          <img
+            className="loadingImg"
+            src="/isLoading.gif"
+            alt="Loading Icon not found!"
+          />
+        </div>
       ) : (
         <div>
           <img
             className="detailsImg"
             src={productDetails.image}
-            alt={'Product details not available!'}
+            alt={'Product image not available!'}
           />
           <div className="productDetails">
             <p>
